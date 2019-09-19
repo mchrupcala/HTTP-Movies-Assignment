@@ -86,6 +86,19 @@ body {
   margin: 0 auto;
 }
 
+.delete-button {
+  position: absolute;
+  top: 125px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+.delete-button:hover {
+  background-color: green;
+  color: white;
+}
+
 .update-form input {
   margin: 4px 0;
 }
