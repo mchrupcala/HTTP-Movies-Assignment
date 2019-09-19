@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import UpdateMovie from './UpdateMovie';
 
 export default class Movie extends React.Component {
@@ -45,12 +45,18 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+
         <Link to={`/update-movie/${this.state.movie.id}`}>
         <div className="update-button" onClick={this.updateMovie}>
           Update
           {/* <UpdateMovie movie={this.state.movie}/> */}
         </div>
         </Link>
+
+        {/* <Route path='/update-movie/:id' 
+        render={props => (
+          <UpdateMovie  {...props} movies={this.state.movie} />
+        )} /> */}
       </div>
     );
   }

@@ -1,28 +1,54 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+
+const initialMovie = {
+    title: '',
+    director: '',
+    metascore: '',
+    star: ''
+  };
+
+  //pass in movies props list from App --> movielist --> UpdateMovie
 
 const UpdateMovie = props => {
-    console.log(props);
+    const [movie, setMovie] = useState(initialMovie);
+
+    const { match, movies } = props;
+
+    useEffect(() => {
+    const id = match.params.id;
+    const movieToUpdate = movies.find(movie => `${movie.id}` === id);
     
+    if (movieToUpdate) {
+      console.log('Here: ', movieToUpdate);
+        setMovie(movieToUpdate)
+    }
+    }, [match, movies]);
+
     return (
-        <form>
+        <form className="update-form">
             <input
-            type="text">
-                {props.title}
+            type="text"
+            placeholder={movie.title}>
+                
             </input>
 
             <input
-            type="text">
-                {props.director}
+            type="text"
+            placeholder={movie.director}>
+                
             </input>
             
             <input
-            type="text">
-                {props.metascore}
+            type="text"
+            placeholder={movie.metascore}>
+                
             </input>
 
             <input
-            type="text">
-                {props.star}
+            type="text"
+            placeholder={movie.stars}>
+                
             </input>
             
             <button>

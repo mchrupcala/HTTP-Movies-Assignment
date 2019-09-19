@@ -79,6 +79,17 @@ body {
   color: white;
 }
 
+.update-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.update-form input {
+  margin: 4px 0;
+}
+
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
