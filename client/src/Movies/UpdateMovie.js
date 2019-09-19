@@ -25,33 +25,63 @@ const UpdateMovie = props => {
     }
     }, [match, movies]);
 
+    const handleChange = e => {
+        // e.persist();
+        // let value = e.target.value;
+        setMovie({
+            ...movie,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        axios.put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+        .then(res => {
+            console.log(res);
+            setMovie(initialMovie);
+            props.history.push(`/movies/${movie.id}`)
+        })
+        .catch(err => console.log(err))
+    }
+
+
+
     return (
-        <form className="update-form">
+        <form className="update-form" onSubmit={handleSubmit}>
             <input
             type="text"
-            placeholder={movie.title}>
+            name='title'
+            value={movie.title}
+            onChange={handleChange}>
                 
             </input>
 
             <input
             type="text"
-            placeholder={movie.director}>
+            name='director'
+            value={movie.director}
+            onChange={handleChange}>
                 
             </input>
             
             <input
             type="text"
-            placeholder={movie.metascore}>
+            name='metascore'
+            value={movie.metascore}
+            onChange={handleChange}>
                 
             </input>
 
             <input
             type="text"
-            placeholder={movie.stars}>
+            name='stars'
+            value={movie.stars}
+            onChange={handleChange}>
                 
             </input>
             
-            <button>
+            <button type="submit">
                 Update
             </button>
         </form>
